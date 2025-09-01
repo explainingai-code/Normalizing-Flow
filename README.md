@@ -11,18 +11,22 @@ As of today the repo provides code to do the following:
 
 
 ## Normalizing Flows Tutorial Video
-<a href="">
-   <img alt="Normalizing Flows Tutorial" src=""
+<a href="https://www.youtube.com/watch?v=x11yFPsttRw">
+   <img alt="Normalizing Flows Tutorial" src="https://github.com/user-attachments/assets/d4800d9b-7cfa-4006-9510-7368f129eb65"
    width="400">
 </a>
 ___  
 
 ## Sample Output for trained normalizing flows model on mnist
 Linear Model - Left, Convolutional Model - Right
+
+<img width="300" alt="linear-normflow-output" src="https://github.com/user-attachments/assets/be157820-5a79-4254-87e7-4977bf38b113" />
+<img width="300" alt="conv-normflow-output" src="https://github.com/user-attachments/assets/3c7b82d2-5168-4c7e-a00c-c49b7d4dd4ec" />
+
 ## Sample Output for Autoencoder on MNIST
 Image - Top, Reconstructions - Below
 
-<img src="" width="300">
+<img src="https://github.com/user-attachments/assets/1be2cf25-4488-48d0-9068-d80c23c65854" width="200">
 
 ___
 
@@ -57,7 +61,7 @@ NormalizingFlow-PyTorch
 ## Configuration
  Allows you to play with different components of normalizing flows and autoencoder training
 * ```config/mnist.yaml``` - Linear normalizing flows model
-* ```config/mnist-conv.yaml``` - Convolutional normalizing flows model
+* ```config/mnist_conv.yaml``` - Convolutional normalizing flows model
 
 ___  
 ## Training
@@ -67,7 +71,7 @@ The repo provides training and inference for Mnist but for working on your own d
 
 Once the config and dataset is setup:
 * Train the auto encoder on your dataset using [this section](#training-autoencoder-for-mnist)
-* For training NormalizingFlows model follow [this section](#training-normalizing-flows-model)
+* For training Normalizing Flows model follow [this section](#training-normalizing-flows-model)
 
 
 ## Training AutoEncoder for MNIST
@@ -75,15 +79,15 @@ Once the config and dataset is setup:
 * For training autoencoder on your own dataset 
   * Create your own config and have the path point to images (look at mnist.yaml for guidance)
   * Create your own dataset class, similar to mnist_dataset.py 
-  * Use the new dataset class [here]()
+  * Use the new dataset class [here](https://github.com/explainingai-code/Normalizing-Flow/blob/main/tools/train_vae.py#L50)
 * For training autoencoder run ```python -m tools.train_vae --config config/mnist.yaml``` for training vae with the desire config file
 * For inference using trained autoencoder run```python -m tools.infer_vae --config config/mnist.yaml``` for generating reconstructions with right config file. Use `save_latent=True` in config to save the latent files 
 
 
 ## Training Normalizing Flows Model
 Train the autoencoder first and setup dataset accordingly.
-* ```python -m tools.train --config config/mnist.yaml``` for training normalizing flows model using linear layers
-* ```python -m tools.sample --config config/mnist.yaml``` for sampling from normalizing flows model using linear layers
+* ```python -m tools.train --config config/mnist.yaml``` for training normalizing flows model using linear layers. Use config/mnist_conv.yaml for convolutional model.
+* ```python -m tools.sample --config config/mnist.yaml``` for sampling from normalizing flows model using linear layers. Use config/mnist_conv.yaml for convolutional model.
 
 
 
