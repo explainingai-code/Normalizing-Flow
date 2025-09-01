@@ -1,0 +1,48 @@
+dataset_params:
+  im_path: 'data/mnist/train/images'
+  im_size : 28
+  im_channels : 1
+  name: 'mnist'
+
+autoencoder_params:
+  z_channels: 4
+  down_channels : [32, 64, 128]
+  mid_channels : [128, 128]
+  down_sample : [True, True]
+  attn_down : [False, False]
+  norm_channels: 32
+  num_heads: 16
+  num_down_layers : 1
+  num_mid_layers : 1
+  num_up_layers : 1
+
+normflow_params:
+  conv: True
+  num_layers : 6
+  hidden_dim : 64
+
+
+train_params:
+  seed : 1111
+  task_name: 'mnist'
+  autoencoder_batch_size: 64
+  disc_start: 1000
+  disc_weight: 0.5
+  codebook_weight: 1
+  commitment_beta: 0.2
+  perceptual_weight: 1
+  kl_weight: 0.000005
+  autoencoder_epochs: 10
+  autoencoder_lr: 0.0001
+  autoencoder_acc_steps: 1
+  autoencoder_img_save_steps: 8
+  save_latents: True
+  norm_flow_batch_size: 64
+  normflow_epochs : 10
+  num_samples : 225
+  normflow_lr: 0.001
+  normflow_img_save_steps : 100
+  vae_latent_dir_name : 'vae_latents'
+  normflow_ckpt_name: 'normflow_conv_ckpt.pth'
+  vae_autoencoder_ckpt_name: 'vae_autoencoder_ckpt.pth'
+  vae_discriminator_ckpt_name: 'vae_discriminator_ckpt.pth'
